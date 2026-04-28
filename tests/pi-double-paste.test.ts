@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import piDoublePaste, { DoublePasteEditor } from "../src/index";
+import piDoublePaste, { DoublePasteEditor } from "../index";
 
 const PASTE_START = "\x1b[200~";
 const PASTE_END = "\x1b[201~";

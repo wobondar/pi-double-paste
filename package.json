@@ -17,11 +17,11 @@
   },
   "pi": {
     "extensions": [
-      "./src/index.ts"
+      "./index.ts"
     ]
   },
   "files": [
-    "src",
+    "index.ts",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"

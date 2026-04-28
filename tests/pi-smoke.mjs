@@ -14,7 +14,7 @@ const args = [
   "--no-themes",
   "--no-extensions",
   "-e",
-  "./src/index.ts",
+  "./index.ts",
 ];
 
 try {

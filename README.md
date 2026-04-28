@@ -82,7 +82,7 @@ pi -e npm:pi-double-paste
 From this repository:
 
 ```bash
-pi -e ./src/index.ts
+pi -e ./index.ts
 ```
 
 Install the package locally:
