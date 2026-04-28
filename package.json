@@ -1,0 +1,51 @@
+{
+  "name": "pi-double-paste",
+  "version": "0.1.0",
+  "description": "Paste a long block once to collapse it, paste it again to expand it in the editor.",
+  "type": "module",
+  "keywords": [
+    "pi-extension"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:pi": "node tests/pi-smoke.mjs",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "prepublishOnly": "npm run fmt:check && npm run lint && npm run test"
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/wobondar/pi-double-paste#readme",
+  "bugs": {
+    "url": "https://github.com/wobondar/pi-double-paste/issues"
+  },
+  "license": "MIT",
+  "author": "wobondar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wobondar/pi-double-paste.git"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
+    "oxlint-tsgolint": "^0.22.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  }
+}
