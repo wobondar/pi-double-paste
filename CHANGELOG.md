@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/wobondar/pi-double-paste/compare/v0.3.0...v0.3.1) (2026-04-30)
+
+
+### Bug Fixes
+
+* update deps ([cd793d2](https://github.com/wobondar/pi-double-paste/commit/cd793d22ec1d6f1a691ab8239fe870b55bdc3c96))
+
 ## [0.3.0](https://github.com/wobondar/pi-double-paste/compare/v0.2.1...v0.3.0) (2026-04-28)
 
 
