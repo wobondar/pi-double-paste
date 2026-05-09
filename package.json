@@ -4,6 +4,7 @@
   "description": "Paste a long block once to collapse it, paste it again to expand it in the editor.",
   "type": "module",
   "keywords": [
+    "pi-package",
     "pi-extension"
   ],
   "scripts": {
@@ -37,8 +38,8 @@
     "url": "git+https://github.com/wobondar/pi-double-paste.git"
   },
   "peerDependencies": {
-    "@mariozechner/pi-coding-agent": "*",
-    "@mariozechner/pi-tui": "*"
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
