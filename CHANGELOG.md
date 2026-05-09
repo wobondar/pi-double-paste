@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.2](https://github.com/wobondar/pi-double-paste/compare/v0.3.1...v0.3.2) (2026-05-09)
+
+
+### Bug Fixes
+
+* migrate pi to earendil-works scope ([ea2d1b7](https://github.com/wobondar/pi-double-paste/commit/ea2d1b7285d56cb622c8dc247095773eca927056))
+
+
+### Dependencies
+
+* **deps-dev:** bump oxfmt from 0.47.0 to 0.48.0 ([#7](https://github.com/wobondar/pi-double-paste/issues/7)) ([6fa75bb](https://github.com/wobondar/pi-double-paste/commit/6fa75bb863163b37c03e3236ea78d77db3bd59e3))
+* **deps-dev:** bump oxlint from 1.62.0 to 1.63.0 ([#6](https://github.com/wobondar/pi-double-paste/issues/6)) ([7df2341](https://github.com/wobondar/pi-double-paste/commit/7df2341a73d952d2852d3672ec668f727271e09b))
+* **deps:** bump @anthropic-ai/sdk and @mariozechner/pi-coding-agent ([#5](https://github.com/wobondar/pi-double-paste/issues/5)) ([a449ca3](https://github.com/wobondar/pi-double-paste/commit/a449ca33999440ad0e72e3556a7894626c186667))
+* **deps:** bump fast-xml-builder from 1.1.5 to 1.2.0 ([#8](https://github.com/wobondar/pi-double-paste/issues/8)) ([142b398](https://github.com/wobondar/pi-double-paste/commit/142b398129c4ea0f0127501369818329a4c14204))
+
 ## [0.3.1](https://github.com/wobondar/pi-double-paste/compare/v0.3.0...v0.3.1) (2026-04-30)
 
 
