@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/wobondar/pi-double-paste/compare/v0.3.2...v0.4.0) (2026-05-12)
+
+
+### Features
+
+* wrap existing editor factory ([01c6b2a](https://github.com/wobondar/pi-double-paste/commit/01c6b2a2b2e650a48402f56385b22811181055bd))
+* wrap existing editor factory ([#10](https://github.com/wobondar/pi-double-paste/issues/10)) ([23e1964](https://github.com/wobondar/pi-double-paste/commit/23e196463b058e48cfde531709a40195d4831e63))
+
 ## [0.3.2](https://github.com/wobondar/pi-double-paste/compare/v0.3.1...v0.3.2) (2026-05-09)
 
 
