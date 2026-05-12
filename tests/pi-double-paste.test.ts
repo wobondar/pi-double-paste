@@ -40,13 +40,18 @@ describe("pi-double-paste extension registration", () => {
       }),
     };
     const setEditorComponent = vi.fn<(component: Function) => void>();
+    const getEditorComponent = vi.fn<() => undefined>(() => undefined);
     const notify = vi.fn<(message: string, level: string) => void>();
 
     piDoublePaste(pi as any);
     expect(pi.on).toHaveBeenCalledWith("session_start", expect.any(Function));
 
-    handlers.get("session_start")?.({}, { hasUI: true, ui: { setEditorComponent, notify } });
+    handlers.get("session_start")?.(
+      {},
+      { hasUI: true, ui: { getEditorComponent, setEditorComponent, notify } },
+    );
 
+    expect(getEditorComponent).toHaveBeenCalled();
     expect(setEditorComponent).toHaveBeenCalledWith(expect.any(Function));
     expect(notify).toHaveBeenCalledWith(
       "pi-double-paste loaded: paste the same long text twice to expand it in the editor.",

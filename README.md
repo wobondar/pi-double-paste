@@ -91,16 +91,23 @@ Install the package locally:
 pi install /absolute/path/to/pi-double-paste
 ```
 
-## Tests
+### Requirements
+
+- pi 0.71.0 or newer.
+
+## Development
 
 ```bash
 npm install
 npm test
+npm run test:pi
+npm run fmt
+npm run lint
 ```
 
 ## Notes
 
-- This extension replaces the interactive editor with a `CustomEditor` subclass.
-- It preserves pi's built-in editor keybindings and delegates short paste handling to the stock editor.
-- If another extension also replaces the editor via `ctx.ui.setEditorComponent(...)`, whichever extension loads last wins.
+- When no custom editor is configured, this extension replaces pi's default interactive editor with a `CustomEditor` subclass.
+- If another extension already configured a custom editor, this extension replaces the active editor component and wraps the previous editor via `ctx.ui.getEditorComponent()`.
+- It preserves pi's built-in editor keybindings and delegates normal input handling to the base editor.
 - Pi currently treats long paste as more than 10 lines or more than 1000 characters; this extension mirrors those thresholds.
