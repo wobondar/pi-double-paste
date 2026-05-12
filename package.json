@@ -1,6 +1,6 @@
 {
   "name": "pi-double-paste",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Paste a long block once to collapse it, paste it again to expand it in the editor.",
   "type": "module",
   "keywords": [
