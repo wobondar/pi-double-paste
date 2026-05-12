@@ -1,4 +1,9 @@
-import { CustomEditor, type ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import {
+  CustomEditor,
+  type ExtensionAPI,
+  type KeybindingsManager,
+} from "@earendil-works/pi-coding-agent";
+import type { EditorComponent, EditorTheme, TUI } from "@earendil-works/pi-tui";
 
 const PASTE_START = "\x1b[200~";
 const PASTE_END = "\x1b[201~";
@@ -83,13 +88,22 @@ export class DoublePasteEditor extends CustomEditor {
   private pasteTextBuffer = "";
   private records: PasteRecord[] = [];
 
+  constructor(
+    tui: TUI,
+    theme: EditorTheme,
+    keybindings: KeybindingsManager,
+    private readonly base?: EditorComponent,
+  ) {
+    super(tui, theme, keybindings);
+  }
+
   handleInput(data: string): void {
     if (this.isCollectingPaste || data.includes(PASTE_START)) {
       this.handleBracketedPasteInput(data);
       return;
     }
 
-    super.handleInput(data);
+    this.handleBaseInput(data);
   }
 
   private handleBracketedPasteInput(data: string): void {
@@ -98,13 +112,13 @@ export class DoublePasteEditor extends CustomEditor {
     if (!this.isCollectingPaste) {
       const startIndex = chunk.indexOf(PASTE_START);
       if (startIndex === -1) {
-        super.handleInput(chunk);
+        this.handleBaseInput(chunk);
         return;
       }
 
       const beforePaste = chunk.slice(0, startIndex);
       if (beforePaste.length > 0) {
-        super.handleInput(beforePaste);
+        this.handleBaseInput(beforePaste);
       }
 
       chunk = chunk.slice(startIndex + PASTE_START.length);
@@ -133,7 +147,7 @@ export class DoublePasteEditor extends CustomEditor {
 
     // Preserve pi's stock behavior for short paste input.
     if (!isLongPaste(filteredText)) {
-      super.handleInput(`${PASTE_START}${rawPastedText}${PASTE_END}`);
+      this.handleBaseInput(`${PASTE_START}${rawPastedText}${PASTE_END}`);
       return;
     }
 
@@ -170,7 +184,7 @@ export class DoublePasteEditor extends CustomEditor {
     // If pi internals change, fall back to the stock long-paste behavior instead
     // of risking a broken editor.
     if (!(priv.pastes instanceof Map)) {
-      super.handleInput(`${PASTE_START}${content}${PASTE_END}`);
+      this.handleBaseInput(`${PASTE_START}${content}${PASTE_END}`);
       return;
     }
 
@@ -312,14 +326,25 @@ export class DoublePasteEditor extends CustomEditor {
     this.onChange?.(this.getText());
     this.tui.requestRender();
   }
+
+  private handleBaseInput(data: string): void {
+    if (this.base) {
+      this.base.handleInput(data);
+      return;
+    }
+
+    super.handleInput(data);
+  }
 }
 
 export default function piDoublePaste(pi: ExtensionAPI) {
   pi.on("session_start", (_event, ctx) => {
     if (!ctx.hasUI) return;
 
+    const previous = ctx.ui.getEditorComponent();
     ctx.ui.setEditorComponent(
-      (tui, theme, keybindings) => new DoublePasteEditor(tui, theme, keybindings),
+      (tui, theme, keybindings) =>
+        new DoublePasteEditor(tui, theme, keybindings, previous?.(tui, theme, keybindings)),
     );
     ctx.ui.notify(
       "pi-double-paste loaded: paste the same long text twice to expand it in the editor.",
